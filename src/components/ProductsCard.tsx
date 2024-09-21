@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../redux/hook';
-import { Modal } from '@mui/material';
+import Modal from './Modal';
+import { addProduct } from '../redux/features/cardSlice';
+
 
 const ProductsCard = ({product}:{product:any}) => {
-    console.log(product.img)
-    // const dispatch = useAppDispatch()
+    // console.log(product.img)
+    const dispatch = useAppDispatch()
     const [showModal, setShowModal] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState<any>(null);
   
@@ -17,9 +19,10 @@ const ProductsCard = ({product}:{product:any}) => {
       setSelectedProduct(null);
       setShowModal(false);
     };
-    // const handleAddToCart=(product)=>{
-    //   dispatch(addToCart(product))
-    // }
+    const handleAddToCart=(product)=>{
+      console.log(product)
+     dispatch(addProduct(product))
+    }
   
 
 
@@ -40,10 +43,10 @@ const ProductsCard = ({product}:{product:any}) => {
         <img
           src={product.img}
           alt={product.name}
-          className="w-full h-36 object-cover transition-opacity duration-300 hover:opacity-75"
+          className="w-full h-60 object-cover transition-opacity duration-300 hover:opacity-75"
         />
         <div className="p-4 flex flex-col flex-grow">
-          <h3 className="text-xl font-semibold text-green-700 mb-2">
+          <h3 className="text-xl font-bold text-blue-500 mb-2">
             {product.name}
           </h3>
           <p className="text-gray-700 mb-4 flex-grow">{product.description}</p>
@@ -51,9 +54,9 @@ const ProductsCard = ({product}:{product:any}) => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-            //   handleAddToCart(product)
+              handleAddToCart(product)
             }}
-            className="bg-green-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-800 transition duration-300 shadow-md hover:shadow-lg"
+            className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg"
           >
             Add to Cart
           </button>
