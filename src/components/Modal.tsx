@@ -1,10 +1,17 @@
 // import { ShoppingCart } from "lucide-react";
 import React from "react";
 import Rating from "./Rating";
+import { useAppDispatch } from "../redux/hook";
+import { addProduct } from "../redux/features/cardSlice";
 
 
-const Modal = ({ product, onClose, handleAddToCart }: any) => {
-  console.log(product,"form Modal")
+const Modal = ({ product, onClose}: any) => {
+ const dispatch=useAppDispatch()
+ const handleAddToCart=(product)=>{
+   dispatch(addProduct(product))
+   onClose()
+ }
+  // console.log(product,"form Modal")
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[984px] p-4 max-h-[90vh] overflow-auto">
@@ -41,9 +48,9 @@ const Modal = ({ product, onClose, handleAddToCart }: any) => {
               <a
                 className="bg-blue-400 rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-white font-semibold text-sm hover:bg-blue-800 transition duration-300"
                 href="#"
-                onClick={(e) => handleAddToCart(e, product)}
+                onClick={() => handleAddToCart( product)}
               >
-                {/* <ShoppingCart /> */}
+               
                 <span>${product?.price} | Add to Cart</span>
               </a>
               <a

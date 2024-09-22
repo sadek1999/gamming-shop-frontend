@@ -2,7 +2,7 @@ const Banner = () => {
   return (
     <div>
       <div
-        className="hero min-h-screen"
+        className="hero h-3/4"
         style={{
           backgroundImage:
             "url(https://www.siachen.com/wp-content/uploads/2023/12/khelya-sports-annapoorneswari-nagar-bangalore-sports-goods-dealers-itzztzzu76.jpg)",

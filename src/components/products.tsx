@@ -5,7 +5,10 @@ import { useGetProductsQuery } from '../redux/api/api';
 const Products = () => {
 const {data,isLoading,isError}=useGetProductsQuery('')
 const products=data?.data
-console.log(products)
+// console.log(products)
+if(isLoading){
+  return <div>Loading...........</div>
+}
 
     return (
         <div className="container">

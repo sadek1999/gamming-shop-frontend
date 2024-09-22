@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { baseApi } from './api/api'
-// ...
+import cardReducer from "./features/cardSlice"
 
 export const store = configureStore({
   reducer: {
+    card:cardReducer,
    [baseApi.reducerPath]:baseApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
