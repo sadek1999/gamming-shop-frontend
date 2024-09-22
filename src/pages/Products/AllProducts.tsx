@@ -5,23 +5,33 @@ import Products from "../../components/products";
 import Category from "../../components/filter/category";
 import Brand from "../../components/filter/Brand";
 import ProductsCard from "../../components/ProductsCard";
+import { Button } from "@mui/material";
+
 
 
 const AllProducts = () => {
-  const [params,setParams]=useState('')
+  const [brand,setBrand]=useState('')
   const [category,setCategory]=useState('')
-  const {data,isLoading,isError}=useGetProductsQuery(category)
+  const {data,isLoading,isError}=useGetProductsQuery({category,brand})
   const products=data?.data
-  console.log(category,"form all products")
-
+  // console.log(brand,"form all products")
+  const handelFilter=()=>{
+    
+    setBrand('')
+    setCategory('')
+  }
+if(isLoading){
+  return <p>Loading ...............</p>
+}
 
   return (
-    <div className=" md:flex">
-      <div className=" bg-red-200  p-3">
+    <div className=" md:flex ">
+      <div className=" bg-red-200  p-3 space-y-2">
         <p className="text-xl text-black font-semibold">Filter you Products</p>
 
         <Category category={category} setCategory={setCategory} ></Category>
-        <Brand />
+        <Brand brand={brand} setBrand={setBrand} />
+        <Button className="btn btn-outline btn-primary" onClick={handelFilter}>Clear Filter</Button>
       </div>
       <div className="md:w-3/4">
         <div className="container">
