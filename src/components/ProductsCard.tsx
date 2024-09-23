@@ -41,6 +41,7 @@ const ProductsCard = ({ product }: { product: any }) => {
           src={product.img}
           alt={product.name}
           className="w-full h-60 object-cover transition-opacity duration-300 hover:opacity-75"
+         
         />
         <div className="p-4 flex flex-col flex-grow">
           <h3 className="text-xl font-bold text-blue-500 mb-2">
