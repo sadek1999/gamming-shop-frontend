@@ -7,6 +7,7 @@ import MainLayout from "./../components/layouts/MainLayout";
 import AllProducts from "../pages/Products/AllProducts";
 import ManageProducts from "../pages/Products/manageProducts";
 import Card from "../pages/card/card";
+import AddProducts from "../pages/Products/component/AddProducts";
 
 
 export const router = createBrowserRouter([
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/card",
         element:<Card></Card> ,
+      },
+      {
+        path: "/addProducts",
+        element:<AddProducts></AddProducts> ,
       },
     ],
   },
